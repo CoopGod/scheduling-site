@@ -1,0 +1,88 @@
+/* HEADER */
+
+header {
+  text-align: center;
+  margin: auto;
+  width: 40%;
+}
+
+.title,
+.subtitle {
+  text-align: center;
+  color: #d90429;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* BODY */
+
+body {
+  background-color: #edf2f4;
+  font-family: 'Nunito', sans-serif;
+  margin: 0;
+  color: #2b2d42;
+}
+
+/* Buttons */
+
+.submit {
+  width: fit-content;
+  border-radius: 10px;
+  background-color: #d90429;
+  color: #edf2f4;
+}
+
+.special-button {
+  background: #ef233c;
+  border-radius: 11px;
+  padding: 20px 45px;
+  color: #ffffff;
+  display: inline-block;
+  font: normal bold 26px/1 "Open Sans", sans-serif;
+  text-align: center;
+}
+
+
+/* TABLE */
+
+.shifts {
+  text-align: center;
+  margin: auto;
+  border-collapse: collapse;
+  width: 95%;
+  font-size: 23px;
+}
+
+.shifts td,
+.shifts th {
+  border: 1px solid #2D3A3A;
+  padding: 8px;
+}
+
+.shifts tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.shifts tr:hover {
+  background-color: #ddd;
+}
+
+.shifts th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  font-size: 30px;
+  background-color: #d90429;
+  color: white;
+}
+
+/* Base stlying for table from W3schools */
+
+.form {
+  text-align: center;
+  margin: auto;
+}
+
+.input-text {
+  font-size: 23px;
+  padding: 10px;
+}
