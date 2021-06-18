@@ -1,5 +1,4 @@
 /* HEADER */
-
 header {
   text-align: center;
   margin: auto;
@@ -18,8 +17,12 @@ header {
 body {
   background-color: #edf2f4;
   font-family: 'Nunito', sans-serif;
-  margin: 0;
   color: #2b2d42;
+}
+
+.master-container
+{
+  /* TODO */
 }
 
 /* Buttons */
