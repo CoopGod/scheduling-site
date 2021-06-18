@@ -23,8 +23,8 @@ def main():
     db.execute("CREATE TABLE online (ID int, staff text, PRIMARY KEY (ID))")
     # Gather starting and finishing date
     # get inputs later-----------------------------------------
-    startDate = date(2020, 12, 14)
-    endDate = date(2021, 1, 17)
+    startDate = date(2021, 6, 14)
+    endDate = date(2021, 7, 4)
     delta = timedelta(days=1)
 
     # Open csv file and update SQL
@@ -47,7 +47,7 @@ def main():
             db.execute("INSERT INTO online (staff, ID) VALUES (?, ?)", staff, rowCount)
 
             # Interate through dates to update rows for each staff member
-            startDate = date(2020, 12, 14)
+            startDate = date(2021, 6, 14)
             while startDate <= endDate:
                 currentDate = startDate.strftime("%d-%b")
                 shift = row[currentDate]
