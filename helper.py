@@ -10,55 +10,55 @@ db = SQL("sqlite:///schedule.db")
 
 
 def loadCalendar(inputForDelta):
-    try:
-        # Declare date and end date for display of SQL
-        delta = timedelta(days=1)
-        deltaInteration = (delta * 7) * inputForDelta
+    # Declare date and end date for display of SQL
+    delta = timedelta(days=1)
+    deltaInteration = (delta * 7) * inputForDelta
 
-        # Gather Current date
-        todayDate = datetime.now()
-        print(todayDate)
-        todayDateRaw = str(todayDate).split(' ')
-        outputDate = str(todayDateRaw[0]).split("-")
+    # Gather Current date
+    todayDate = datetime.now()
+    print(todayDate)
+    todayDateRaw = str(todayDate).split(' ')
+    outputDate = str(todayDateRaw[0]).split("-")
+
+    startDate = date(int(outputDate[0]), int(outputDate[1]), int(outputDate[2])) + deltaInteration
+    print(startDate)
+    endDate = startDate + (delta * 6)
+
+    # Table variables
+    tableInfoHead = Markup("<th>Staff</th>")
+    tableInfoBody = Markup("")
+
+    # Insert Headers
+    while startDate <= endDate:
+        currentDate = startDate.strftime("%d-%b")
+        startDate += delta
+        tableInfoHead += Markup(f"<th>{currentDate}</th>")
+
+    # Insert Info According to Date (7 days at a time)
+    startDate = date(int(outputDate[0]), int(outputDate[1]), int(outputDate[2])) + deltaInteration
+    displayData = db.execute("SELECT * FROM online WHERE ? = ?", currentDate, currentDate)
+
+    tableInfoBody = Markup("")
+    i = 0
+    while i < len(displayData):
+        staff = displayData[i]["staff"]
+        tableInfoBody += Markup(f"<tr><td>{staff}</td>")
 
         startDate = date(int(outputDate[0]), int(outputDate[1]), int(outputDate[2])) + deltaInteration
-        print(startDate)
-        endDate = startDate + (delta * 6)
-
-        # Table variables
-        tableInfoHead = Markup("<th>Staff</th>")
-        tableInfoBody = Markup("")
-
-        # Insert Headers
         while startDate <= endDate:
-            currentDate = startDate.strftime("%d-%b")
-            startDate += delta
-            tableInfoHead += Markup(f"<th>{currentDate}</th>")
-
-        # Insert Info According to Date (7 days at a time)
-        startDate = date(int(outputDate[0]), int(outputDate[1]), int(outputDate[2])) + deltaInteration
-        displayData = db.execute("SELECT * FROM online WHERE ? = ?", currentDate, currentDate)
-
-        tableInfoBody = Markup("")
-        i = 0
-        while i < len(displayData):
-            staff = displayData[i]["staff"]
-            tableInfoBody += Markup(f"<tr><td>{staff}</td>")
-
-            startDate = date(int(outputDate[0]), int(outputDate[1]), int(outputDate[2])) + deltaInteration
-            while startDate <= endDate:
+            try:
                 currentDate = startDate.strftime("%d-%b")
                 dateInteration = displayData[i][currentDate]
                 tableInfoBody += Markup(f"<td>{dateInteration}</td>")
                 startDate += delta
-            tableInfoBody += Markup("</tr>")
-            i += 1
+            except KeyError:
+                tableInfoBody += Markup(f"<td>N/A</td>")
+                startDate += delta
+        tableInfoBody += Markup("</tr>")
+        i += 1
 
-        # return Values
-        return tableInfoHead, tableInfoBody
-    except KeyError:
-        session['error'] = "Movement past written schedule"
-        return redirect("/error")
+    # return Values
+    return tableInfoHead, tableInfoBody
 
 
 def login_required(f):
