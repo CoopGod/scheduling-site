@@ -10,6 +10,8 @@ header {
   text-align: center;
   color: #d90429;
   font-family: 'Nunito', sans-serif;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 /* BODY */
@@ -18,6 +20,7 @@ body {
   background-color: #edf2f4;
   font-family: 'Nunito', sans-serif;
   color: #2b2d42;
+  font-size: 4vh;
 }
 
 .master-container
@@ -27,17 +30,24 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 15px;
-  border: solid black 1px;
+  padding: 25px;
+  border: solid rgb(66, 28, 28) 1px;
+  background-color: rgb(207, 196, 196);
+  border-radius: 10px;
+}
+
+p
+{
+  font-size: 2vh;
 }
 
 /* Buttons */
-
 .submit {
   width: fit-content;
   border-radius: 10px;
   background-color: #d90429;
   color: #edf2f4;
+  font-size: 3vh;
 }
 
 .special-button {
@@ -46,7 +56,7 @@ body {
   padding: 20px 45px;
   color: #ffffff;
   display: inline-block;
-  font: normal bold 26px/1 "Open Sans", sans-serif;
+  font: normal bold 3vh "Open Sans", sans-serif;
   text-align: center;
 }
 

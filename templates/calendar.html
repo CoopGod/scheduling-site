@@ -13,23 +13,25 @@
 </head>
 
 <body>
-    <div class="header">
-        <h1 class="title">GlassMasters</h1>
-        <h3 class="subtitle">Online Calendar</h3>
+    <div class="master-container" style="width: 90%;">
+        <div class="header">
+            <h1 class="title">GlassMasters</h1>
+            <h3 class="subtitle">Online Calendar</h3>
+        </div>
+
+        <table class="shifts">
+            <tr>{{ tableInfoHead }}</tr>
+
+            {{ tableInfoBody }}
+
+        </table>
+        <form method="post" class="form" style="padding-top: 15px;">
+            <input type="submit" value="Add" name="addDate" class='special-button'>
+            <input type="submit" value="Remove" name="removeData" class='special-button'>
+            <input type="submit" value="/\" name="traverseCalendarF" class='special-button'>
+            <input type="submit" value="\/" name="traverseCalendarB" class='special-button'>
+        </form>
     </div>
-
-    <table class="shifts">
-        <tr>{{ tableInfoHead }}</tr>
-
-        {{ tableInfoBody }}
-
-    </table>
-    <form method="post" class="form" style="padding-top: 15px;">
-        <input type="submit" value="Add" name="addDate" class='special-button'>
-        <input type="submit" value="Remove" name="removeData" class='special-button'>
-        <input type="submit" value="/\" name="traverseCalendarF" class='special-button'>
-        <input type="submit" value="\/" name="traverseCalendarB" class='special-button'>
-    </form>
 </body>
 
 </html>
