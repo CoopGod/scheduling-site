@@ -93,6 +93,8 @@ def addShift():
         if request.form.get("submit"):
             # Gather input Data
             inputDate = request.form.get("date")
+            inputMonth = request.form.get("month")
+            monthDate = inputDate + "-" + inputMonth
             inputStaff = request.form.get("staff")
             inputTime = request.form.get("time")
 
@@ -114,7 +116,7 @@ def addShift():
 
             # Check if employee exsists
             try:
-                print(data[0][inputDate])
+                print(data[0][monthDate])
             except IndexError:
                 session['error'] = "Employee Does not exsist"
                 return redirect('/error')
@@ -123,7 +125,7 @@ def addShift():
                 return redirect('/error')
 
             # Update time into date
-            db.execute("UPDATE online SET ? = ? WHERE id = ?", inputDate, inputTime, rowCount + 1)
+            db.execute("UPDATE online SET ? = ? WHERE id = ?", monthDate, inputTime, rowCount + 1)
             return redirect("/calendar")
     else:
         return render_template("addShift.html")
@@ -136,6 +138,8 @@ def delShift():
         if request.form.get("submit"):
             # Gather input info
             inputDate = request.form.get("date")
+            inputMonth = request.form.get("month")
+            monthDate = inputDate + "-" + inputMonth
             inputStaff = request.form.get("staff")
 
             # Find employee count
@@ -156,13 +160,13 @@ def delShift():
 
             # Check if employee exsists
             try:
-                print(data[0][inputDate])
+                print(data[0][monthDate])
             except IndexError:
                 session['error'] = "Employee Does not exsist"
                 return redirect('/error')
 
             # Update time into date
-            db.execute("UPDATE online SET ? = ' ' WHERE id = ?", inputDate, rowCount + 1)
+            db.execute("UPDATE online SET ? = ' ' WHERE id = ?", monthDate, rowCount + 1)
             return redirect("/calendar")
 
     else:
