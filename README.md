@@ -1,7 +1,9 @@
 # SCHEDULING SITE
-## WHAT:
-### This tool is used for ease of access to the shifts of all employees, as well as access to colloborate shift swaps, changes, etc.
-## RUNDOWN:
-### The tool takes on a CSV file, Uploads the Data to a SQL database and then displays the data from the database in a neat, simple website using jinja and flask.
-## LANGUAGES USED:
-### The tool is coded using python as the backend, HTML & CSS as Markup along with Jinja, with a database in SQL.
+*WHAT:* 
+This tool is used as a **team calendar**. It allows all employee's to view, edit, add, and delete information about shift times and dates.
+
+*RUNDOWN:*
+This tool takes a CSV file and **converts and updates** the Data to a SQL database (uploader.py) and then displays the data from the database in the website using jinja and flask (app.py, helper.py).
+
+*LANGUAGES USED:*
+The tool is coded using **python-flask** as the backend, HTML & CSS as Markup along with Jinja, with a database in SQL.
