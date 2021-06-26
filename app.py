@@ -3,7 +3,6 @@ from cs50 import SQL
 from flask import Flask, redirect, render_template, request, session
 # Load helper functions
 from helper import *
-from git import *
 
 # Configure application
 app = Flask(__name__)
@@ -11,7 +10,6 @@ app.config['SECRET_KEY'] = 'GM_CAL'
 
 # Load database
 db = SQL("sqlite:///schedule.db")
-pushToGit()
 
 # Login Page (add hash, if user login, etc)
 @app.route("/", methods=["GET", "POST"])
