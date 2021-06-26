@@ -1,7 +1,6 @@
 # Import packages
-import os
 from cs50 import SQL
-from flask import Flask, flash, jsonify, redirect, render_template, request, session, Markup
+from flask import redirect, session, Markup
 from datetime import date, timedelta, datetime
 from functools import wraps
 
@@ -59,7 +58,7 @@ def loadCalendar(inputForDelta):
 
     # return Values
     return tableInfoHead, tableInfoBody
-
+    
 
 def login_required(f):
     @wraps(f)

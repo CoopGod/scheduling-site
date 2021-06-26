@@ -1,9 +1,6 @@
 # Import packages
-import os
 from cs50 import SQL
-from flask import Flask, flash, jsonify, redirect, render_template, request, session, Markup
-from flask_session import Session
-from datetime import date, timedelta, datetime
+from flask import Flask, redirect, render_template, request, session,
 # Load helper functions
 from helper import *
 
